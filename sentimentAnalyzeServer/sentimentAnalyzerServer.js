@@ -1,8 +1,8 @@
 const express = require('express');
-const dotenv = require('dotenv'); 
+//const dotenv = require('dotenv');
 const app = new express();
 
-/*This tells the server to use the client 
+/*This tells the server to use the client
 folder for all static resources*/
 app.use(express.static('client'));
 
@@ -10,10 +10,10 @@ app.use(express.static('client'));
 const cors_app = require('cors');
 app.use(cors_app());
 
-/*Uncomment the following lines to loan the environment 
+/*Uncomment the following lines to loan the environment
 variables that you set up in the .env file*/
 
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const api_key = process.env.API_KEY;
@@ -151,4 +151,3 @@ app.get("/text/sentiment", (req, res) => {
 let server = app.listen(8080, () => {
     console.log('Listening', server.address().port)
 })
-
